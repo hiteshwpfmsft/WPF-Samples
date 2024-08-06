@@ -72,6 +72,14 @@ namespace WPFGallery.ViewModels
             },
             new NavigationCard
             {
+                Name = "Styles",
+                PageType = typeof(StylesPage),
+                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/ColorPaletteResources.png"))},
+               // Icon = newSymbolIcon { Symbol = SymbolRegular.CalendarClock24 },
+                Description = "Compact Sizing"
+            },
+            new NavigationCard
+            {
                 Name = "Text",
                 PageType = typeof(TextPage),
                 Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/TextBlock.png"))},

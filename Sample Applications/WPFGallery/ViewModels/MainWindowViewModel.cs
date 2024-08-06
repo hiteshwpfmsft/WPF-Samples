@@ -151,6 +151,16 @@ public partial class MainWindowViewModel : ObservableObject
         },
         new NavigationItem
         {
+            Name="Styles",
+            PageType = typeof(StylesPage),
+            Icon = "\xE790",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Compact Sizing", typeof(CompactPage)),
+            }
+        },
+        new NavigationItem
+        {
             Name = "Text",
             PageType = typeof(TextPage),
             Icon = "\xE8D2",
