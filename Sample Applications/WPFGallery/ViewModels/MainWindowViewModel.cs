@@ -17,7 +17,164 @@ public partial class MainWindowViewModel : ObservableObject
     private string _searchText = string.Empty;
 
     [ObservableProperty]
-    private ICollection<ControlInfoDataItem> _controls;
+    private ICollection<NavigationItem> _controls = new ObservableCollection<NavigationItem>
+    {
+        new NavigationItem
+        {
+            Name = "Home",
+            PageType = typeof(DashboardPage),
+            Icon = "\xE80F"
+        },
+        new NavigationItem
+        {
+
+            Name = "Design Guidance",
+            PageType = typeof(DesignGuidancePage),
+            Icon = "\xEB3C",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem
+                {
+                    Name = "Colors",
+                    PageType = typeof(ColorsPage),
+                    Icon = "\xE790"
+                },
+                new NavigationItem
+                {
+                    Name = "Typography",
+                    PageType = typeof(TypographyPage),
+                    Icon = "\xE8D2"
+                },
+                new NavigationItem
+                {
+                    Name = "Icons",
+                    PageType = typeof(IconsPage),
+                    Icon = "\xED58"
+                },
+            }
+        },
+        new NavigationItem
+        {
+            Name = "Samples",
+            PageType = typeof(SamplesPage),
+            Icon = "\xEF58",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("User Dashboard", typeof(UserDashboardPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name = "All Controls",
+            PageType = typeof(AllSamplesPage),
+            Icon = "\xE71D",
+        },
+        new NavigationItem
+        {
+            Name = "Basic Input",
+            PageType = typeof(BasicInputPage),
+            Icon = "\xE73A",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Button", typeof(ButtonPage)),
+                new NavigationItem("CheckBox", typeof(CheckBoxPage)),
+                new NavigationItem("ComboBox", typeof(ComboBoxPage)),
+                new NavigationItem("RadioButton", typeof(RadioButtonPage)),
+                new NavigationItem("Slider", typeof(SliderPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name="Collections",
+            PageType = typeof(CollectionsPage),
+            Icon = "\xE80A",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("DataGrid", typeof(DataGridPage)),
+                new NavigationItem("ListBox", typeof(ListBoxPage)),
+                new NavigationItem("ListView", typeof(ListViewPage)),
+                new NavigationItem("TreeView", typeof(TreeViewPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name="Date & Calendar",
+            PageType = typeof(DateAndTimePage),
+            Icon = "\xEC92",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Calendar", typeof(CalendarPage)),
+                new NavigationItem("DatePicker", typeof(DatePickerPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name = "Layout",
+            PageType = typeof(LayoutPage),
+            Icon = "\xF246",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Expander", typeof(ExpanderPage)),
+            }
+        },
+        // new NavigationItem
+        // {
+        //     Name = "Media",
+        //     PageType = typeof(MediaPage),
+        //     Children = new ObservableCollection<NavigationItem>
+        //     {
+        //         new NavigationItem("Canvas", typeof(CanvasPage)),
+        //         new NavigationItem("Image", typeof(ImagePage)),
+        //     }
+        // },
+        new NavigationItem
+        {
+            Name = "Navigation",
+            PageType = typeof(NavigationPage),
+            Icon = "\xE700",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Menu", typeof(MenuPage)),
+                new NavigationItem("TabControl", typeof(TabControlPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name = "Status & Info",
+            PageType = typeof(StatusAndInfoPage),
+            Icon = "\xE8F2",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("ProgressBar", typeof(ProgressBarPage)),
+                new NavigationItem("ToolTip", typeof(ToolTipPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name="Styles",
+            PageType = typeof(StylesPage),
+            Icon = "\xE790",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Compact Sizing", typeof(CompactPage)),
+            }
+        },
+        new NavigationItem
+        {
+            Name = "Text",
+            PageType = typeof(TextPage),
+            Icon = "\xE8D2",
+            Children = new ObservableCollection<NavigationItem>
+            {
+                new NavigationItem("Label", typeof(LabelPage)),
+                new NavigationItem("TextBox", typeof(TextBoxPage)),
+                new NavigationItem("TextBlock", typeof(TextBlockPage)),
+                new NavigationItem("RichTextEdit", typeof(RichTextEditPage)),
+                new NavigationItem("PasswordBox", typeof(PasswordBoxPage)),
+            }
+        },
+    };
+
     [ObservableProperty]
     private ControlInfoDataItem? _selectedControl;
     private readonly INavigationService _navigationService;
