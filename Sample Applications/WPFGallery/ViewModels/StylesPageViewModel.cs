@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WPFGallery.Navigation;
 using WPFGallery.Views;
+using WPFGallery.Models;
 
 namespace WPFGallery.ViewModels
 {
@@ -19,17 +20,7 @@ namespace WPFGallery.ViewModels
         private string _pageDescription = "Different Styling options for your app";
 
         [ObservableProperty]
-        private ICollection<NavigationCard> _navigationCards = new ObservableCollection<NavigationCard>
-        {
-            new NavigationCard
-            {
-                Name = "Compact Sizing",
-                PageType = typeof(CompactPage),
-                Icon = new Image {Source= new BitmapImage(new Uri("pack://application:,,,/Assets/ControlImages/CompactSizing.png"))},
-               // Icon = newSymbolIcon { Symbol = SymbolRegular.ArrowDownload24 },
-                Description = "Allows you to make your app more compact"
-            },
-        };
+        private ICollection<ControlInfoDataItem> _navigationCards = ControlsInfoDataSource.Instance.GetControlsInfo("Styles");
 
         private readonly INavigationService _navigationService;
 
@@ -45,7 +36,5 @@ namespace WPFGallery.ViewModels
                 _navigationService.NavigateTo(page);
             }
         }
-
-        
     }
 }
